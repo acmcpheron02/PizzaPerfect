@@ -20,6 +20,7 @@ namespace PizzaPerfect
 				Console.WriteLine();
 				Console.WriteLine("1. Add a New User");
 				Console.WriteLine("2. Review an Existing User");
+                Console.WriteLine("3. Save changes to file");
 				Console.WriteLine("0. Exit");
 				userInput = Int32.Parse(Console.ReadLine());
 				switch (userInput)

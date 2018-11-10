@@ -6,26 +6,31 @@ namespace PizzaPerfect
 {
 	class UserList
 	{
-	    private List<Person> Users {get; set;}
+	    public List<Person> Users {get; set;}
+
+        public UserList()
+        {
+            Users = new List<Person>();
+        }
 
 		public void CreateUser()
 		{
 			Console.WriteLine("Please enter the following information:");
+			Console.WriteLine("Username: ");
+			var username = Console.ReadLine();
 			Console.WriteLine("Full name: ");
 			var name = Console.ReadLine();
-			Console.WriteLine("Email: ");
-			var email = Console.ReadLine();
 
 			ToppingList toppingList = new ToppingList();
 			List<ITopping> toppings = SurveyToppings(toppingList);
 
-			Person person = new Person(name, email, toppings);
+			Person person = new Person(name, username, toppings);
 			SaveUser(person);
 		}
 
 		public void SaveUser(Person person)
 		{
-			Console.WriteLine($"Would you like to save {0} to the user list?", person.FullName);
+			Console.WriteLine("Would you like to add {0} to the user list?", person.Username);
 			Console.WriteLine("Type Y for Yes");
 			Console.WriteLine("Type N for No");
 			do
@@ -69,9 +74,9 @@ namespace PizzaPerfect
 
 		public void FindUser()
 		{
-			Console.WriteLine("Please enter the email address of the user you would like to find.");
-			var email = Console.ReadLine();
-			var foundUser = Users.Where(u => u.Email == email);
+			Console.WriteLine("Please enter the username of the user you would like to find.");
+			var username = Console.ReadLine();
+			var foundUser = Users.Where(u => u.Username == username);
 			Console.WriteLine();
 			foreach (Person person in foundUser)
 			{
