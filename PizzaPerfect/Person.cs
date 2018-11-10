@@ -17,12 +17,5 @@ namespace PizzaPerfect
             Username = username;
             ToppingPrefs = toppingPrefs;
         }
-
-        //public Person()
-        //{
-        //    FullName = null;
-        //    Username = null;
-        //    ToppingPrefs = null;
-        //}
     }
 }

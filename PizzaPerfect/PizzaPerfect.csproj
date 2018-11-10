@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileManager.cs" />
-    <Compile Include="ITopping.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Pizza.cs" />
