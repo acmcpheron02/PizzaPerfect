@@ -10,8 +10,9 @@ namespace PizzaPerfect
     {
         static void Main(string[] args)
         {
-            UserList userlist = new UserList();
-            Menu menu = new Menu(userlist);
+            FileManager fileManager = new FileManager();
+            UserList userlist = new UserList(fileManager);
+            Menu menu = new Menu(userlist, fileManager);
             menu.Display();
         }
     }

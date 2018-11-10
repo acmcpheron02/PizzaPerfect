@@ -1,6 +1,6 @@
 namespace PizzaPerfect
 {
-  public class Topping : ITopping
+  public class Topping //: ITopping
   {
     public string Name {get; private set;}
     public int LikeScale   { get; private set;}

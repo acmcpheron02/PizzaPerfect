@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace PizzaPerfect
 {
@@ -8,9 +10,13 @@ namespace PizzaPerfect
 	{
 	    public List<Person> Users {get; set;}
 
-        public UserList()
+        public UserList(FileManager fileManager)
         {
-            Users = new List<Person>();
+            Users = fileManager.Load();
+            if (Users == null)
+            {
+                Users = new List<Person>();
+            }
         }
 
 		public void CreateUser()
@@ -22,7 +28,7 @@ namespace PizzaPerfect
 			var name = Console.ReadLine();
 
 			ToppingList toppingList = new ToppingList();
-			List<ITopping> toppings = SurveyToppings(toppingList);
+			List<Topping> toppings = SurveyToppings(toppingList);
 
 			Person person = new Person(name, username, toppings);
 			SaveUser(person);
@@ -52,11 +58,11 @@ namespace PizzaPerfect
 			} while(true);
 		}
 
-		private List<ITopping> SurveyToppings(ToppingList toppingList)
+		private List<Topping> SurveyToppings(ToppingList toppingList)
 		{
 			Console.WriteLine("Please rate the following toppings from 1 to 5, 1 being least liked and 5 being most liked. For any toppings you cannot eat, use 0.");
 			int likeness = 0;
-			List<ITopping> toppings = new List<ITopping>(toppingList.Toppings.Length);
+			List<Topping> toppings = new List<Topping>(toppingList.Toppings.Length);
 			for(int i = 0; i < toppingList.Toppings.Length; i++)
 			{
 				Console.WriteLine(toppingList.Toppings[i] + ": ");
