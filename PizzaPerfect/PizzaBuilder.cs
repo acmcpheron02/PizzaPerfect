@@ -19,6 +19,7 @@ namespace PizzaPerfect
         {
             string input;
             string personList = "";
+            bool exit = false;
             List<Person> people = new List<Person>();
             Console.Clear();
             Console.WriteLine("Welcome to the pizza builder!");
@@ -41,21 +42,24 @@ namespace PizzaPerfect
                         int toppingNumber;
                         if (int.TryParse(input, out toppingNumber))
                         {
-                            Build(people, toppingNumber);
-                            break;
+                            Console.Clear();
+                            Console.WriteLine(Build(people, toppingNumber));
+                            Console.WriteLine("Press any key to return to the main menu.");
+                            Console.ReadKey();
+                            exit = true;
                         }
                         else
                         {
                             Console.WriteLine("That was not a valid number. Please try again.");
                         }
-                    } while (true);
+                    } while (!exit);
 
                 }
                 if (input.ToLower() == "q")
                 {
                     break;
                 }
-                else
+                else if (!exit)
                 {
                     Person foundPerson = _userList.GetPerson(input);
                     if (foundPerson == null)
@@ -75,10 +79,10 @@ namespace PizzaPerfect
                         }
                     }
                 }
-            } while (true);
+            } while (!exit);
         }
 
-        public void Build(List<Person> people, int toppingNumber)
+        public string Build(List<Person> people, int toppingNumber)
         {
             List<Topping> combinedToppings = new List<Topping>();
             foreach (Person person in people)
@@ -88,8 +92,47 @@ namespace PizzaPerfect
                     combinedToppings.Add(topping);
                 }
             }
-            //I can't figure out how to factor this in, so right now it looks like 0 will not completely remove toppings.
+            //I can't figure out how to factor this in, so right now it looks like 0 will not completely remove toppings. Coming soon.
             //var banned = combinedToppings.Where(p => p.LikeScale == 0);
+
+            var scoredToppings = combinedToppings
+                .GroupBy(t => t.Name)
+                .Select(tg => new
+                {
+                    Name = tg.Key,
+                    Score = tg.Sum(t => t.LikeScale)
+                });
+
+            var topToppings = scoredToppings
+                .OrderByDescending(s => s.Score)
+                //.Select(s => new {s.Name})
+                .Take(toppingNumber);
+
+            var result = topToppings.ToList();
+            string resultString = "";
+
+            foreach (var name in result)
+            {
+                if (resultString == "")
+                {
+                    resultString = name.Name;
+                }
+                else
+                {
+                    resultString += ", " + name.Name;
+                }
+            }
+
+            return $"Your perfect {toppingNumber} topping pizza should have {resultString} on it.";
+
+            //Select((fruit, index) =>
+            //          new { index, str = fruit.Substring(0, index) });
+
+            //var ofInterest = allMyNames
+            //        .Distinct()
+            //        .Where(x => x.CompareTo(from) >= 0 && x.CompareTo(to) <= 0)
+            //        .OrderBy(x => x)
+            //        .Take(4);
         }
     }
 }
