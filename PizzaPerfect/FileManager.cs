@@ -20,11 +20,11 @@ namespace PizzaPerfect
         public string FileName { get; private set; }
 
 
-        public FileManager()
+        public FileManager(string fileName)
         {
             CurrentDirectory = Directory.GetCurrentDirectory();
             DirectoryInfo directory = new DirectoryInfo(CurrentDirectory);
-            FileName = Path.Combine(directory.FullName, "PizzaPeople.json");
+            FileName = Path.Combine(directory.FullName, fileName);
         }
 
         public void Save(List<Person> people)

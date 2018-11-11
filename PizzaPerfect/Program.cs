@@ -11,7 +11,7 @@ namespace PizzaPerfect
         static void Main(string[] args)
         {
             //Instantiate all the things!
-            FileManager fileManager = new FileManager();
+            FileManager fileManager = new FileManager("PizzaPeople.json");
             UserList userlist = new UserList(fileManager);
             PizzaBuilder pizzaBuilder = new PizzaBuilder(userlist);
             Menu menu = new Menu(userlist, fileManager, pizzaBuilder);
