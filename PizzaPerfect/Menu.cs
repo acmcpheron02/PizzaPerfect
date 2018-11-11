@@ -12,12 +12,14 @@ namespace PizzaPerfect
 	{
 		private readonly UserList _userList;
         private readonly FileManager _fileManager;
+        private readonly PizzaBuilder _pizzaBuilder;
 
         //Need these passed in to use their methods.
-        public Menu(UserList userList, FileManager fileManager)
+        public Menu(UserList userList, FileManager fileManager, PizzaBuilder pizzaBuilder)
 		{
 			_userList = userList;
             _fileManager = fileManager;
+            _pizzaBuilder = pizzaBuilder;
 		}
 
 		public void Display()
@@ -31,7 +33,8 @@ namespace PizzaPerfect
 				Console.WriteLine("1. Add a New User");
 				Console.WriteLine("2. Review an Existing User");
                 Console.WriteLine("3. Save changes to the file");
-				Console.WriteLine("0. Exit");
+                Console.WriteLine("4. Build a pizza");
+                Console.WriteLine("0. Exit");
 				userInput = Int32.Parse(Console.ReadLine());
 				switch (userInput)
 				{
@@ -43,6 +46,11 @@ namespace PizzaPerfect
 						break;
                     case 3:
                         _fileManager.Save(_userList.People);
+                        Console.WriteLine("Saved! Press any key to return to the main menu.");
+                        Console.ReadKey();
+                        break;
+                    case 4:
+                        _pizzaBuilder.GetUsers();
                         break;
 					case 0:
 						Console.WriteLine("See you later! (press any key)");

@@ -13,7 +13,8 @@ namespace PizzaPerfect
             //Instantiate all the things!
             FileManager fileManager = new FileManager();
             UserList userlist = new UserList(fileManager);
-            Menu menu = new Menu(userlist, fileManager);
+            PizzaBuilder pizzaBuilder = new PizzaBuilder(userlist);
+            Menu menu = new Menu(userlist, fileManager, pizzaBuilder);
 
             //Display the menu to kick everything off. We shouldn't get past this function until we're leaving the program.
             menu.Display();

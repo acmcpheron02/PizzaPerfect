@@ -86,6 +86,19 @@ namespace PizzaPerfect
             return toppings;
         }
 
+        public Person GetPerson(string searchedUser)
+        {
+            var foundUsers = People.Where(u => u.Username == searchedUser);
+            if (foundUsers.Count() == 1)
+            {
+                return foundUsers.First();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void DisplayUser()
         {
             do
