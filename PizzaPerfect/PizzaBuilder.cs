@@ -49,7 +49,7 @@ namespace PizzaPerfect
                             Console.WriteLine("That was not a valid number. Please try again.");
                         }
                     } while (true);
-                    
+
                 }
                 if (input.ToLower() == "q")
                 {
@@ -78,9 +78,18 @@ namespace PizzaPerfect
             } while (true);
         }
 
-        public Pizza Build(List<Person> people, int toppingNumber)
+        public void Build(List<Person> people, int toppingNumber)
         {
-            return null;
+            List<Topping> combinedToppings = new List<Topping>();
+            foreach (Person person in people)
+            {
+                foreach (Topping topping in person.ToppingPrefs)
+                {
+                    combinedToppings.Add(topping);
+                }
+            }
+            //I can't figure out how to factor this in, so right now it looks like 0 will not completely remove toppings.
+            //var banned = combinedToppings.Where(p => p.LikeScale == 0);
         }
     }
 }
