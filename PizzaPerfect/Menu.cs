@@ -1,5 +1,11 @@
 using System;
 
+/*  Description
+ *  The menu class is intended both to display options to the user and to route the user to various functions in the program.
+ *      I don't foresee needing many more classes passed into the constructor, but I might. I don't know a better way to structure this
+ *      so that I'm not passing every object into this one point.
+ */
+
 namespace PizzaPerfect
 {
 	class Menu
@@ -7,6 +13,7 @@ namespace PizzaPerfect
 		private readonly UserList _userList;
         private readonly FileManager _fileManager;
 
+        //Need these passed in to use their methods.
         public Menu(UserList userList, FileManager fileManager)
 		{
 			_userList = userList;
@@ -29,13 +36,13 @@ namespace PizzaPerfect
 				switch (userInput)
 				{
 					case 1:
-						_userList.CreateUser();
+						_userList.CreatePerson();
 						break;
 					case 2:
-						_userList.FindUser();
+						_userList.DisplayUser();
 						break;
                     case 3:
-                        _fileManager.Save(_userList.Users);
+                        _fileManager.Save(_userList.People);
                         break;
 					case 0:
 						Console.WriteLine("See you later! (press any key)");

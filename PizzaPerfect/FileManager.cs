@@ -7,12 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+/*  Description
+ *  This class is responsible primarily for file IO operations. It's based in part on the Treehouse video about serialization,
+ *      though I moved some things around to where I thought they made sense.
+ */
+
 namespace PizzaPerfect
 {
     class FileManager
     {
         private string CurrentDirectory { get; set; }
         public string FileName { get; private set; }
+
 
         public FileManager()
         {

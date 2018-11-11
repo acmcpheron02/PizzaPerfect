@@ -10,9 +10,12 @@ namespace PizzaPerfect
     {
         static void Main(string[] args)
         {
+            //Instantiate all the things!
             FileManager fileManager = new FileManager();
             UserList userlist = new UserList(fileManager);
             Menu menu = new Menu(userlist, fileManager);
+
+            //Display the menu to kick everything off. We shouldn't get past this function until we're leaving the program.
             menu.Display();
         }
     }
