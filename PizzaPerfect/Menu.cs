@@ -35,30 +35,33 @@ namespace PizzaPerfect
                 Console.WriteLine("3. Save changes to the file");
                 Console.WriteLine("4. Build a pizza");
                 Console.WriteLine("0. Exit");
-				userInput = Int32.Parse(Console.ReadLine());
-				switch (userInput)
-				{
-					case 1:
-						_userList.CreatePerson();
-						break;
-					case 2:
-						_userList.DisplayUser();
-						break;
-                    case 3:
-                        _fileManager.Save(_userList.People);
-                        Console.WriteLine("Saved! Press any key to return to the main menu.");
-                        Console.ReadKey();
-                        break;
-                    case 4:
-                        _pizzaBuilder.GetUsers();
-                        break;
-					case 0:
-						Console.WriteLine("See you later! (press any key)");
-						Console.ReadKey();
-						break;
-					default:
-						break;
-				}
+                string userString = Console.ReadLine();
+                if (int.TryParse(userString, out userInput))
+                {
+                    switch (userInput)
+                    {
+                        case 1:
+                            _userList.CreatePerson();
+                            break;
+                        case 2:
+                            _userList.DisplayUser();
+                            break;
+                        case 3:
+                            _fileManager.Save(_userList.People);
+                            Console.WriteLine("Saved! Press any key to return to the main menu.");
+                            Console.ReadKey();
+                            break;
+                        case 4:
+                            _pizzaBuilder.GetUsers();
+                            break;
+                        case 0:
+                            Console.WriteLine("See you later! (press any key)");
+                            Console.ReadKey();
+                            break;
+                        default:
+                            break;
+                    }
+                }
 			} while(userInput!=0);
 		}
 	}
