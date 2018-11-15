@@ -31,9 +31,9 @@ namespace PizzaPerfect
                     Console.WriteLine($"So far you have added {personList}.");
                 }
                 Console.WriteLine("Add a person to your group by entering their username below.");
-                Console.WriteLine("To finish adding people, type F in the console. To quit, type Q.");
+                Console.WriteLine("To finish adding people, type finish in the console. To quit, type quit.");
                 input = Console.ReadLine();
-                if (input.ToLower() == "f")
+                if (input.ToLower() == "finish")
                 {
                     do
                     {
@@ -55,7 +55,7 @@ namespace PizzaPerfect
                     } while (!exit);
 
                 }
-                if (input.ToLower() == "q")
+                if (input.ToLower() == "quit")
                 {
                     break;
                 }

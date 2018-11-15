@@ -29,6 +29,12 @@ namespace PizzaPerfect
             Console.WriteLine("Please enter the following information:");
             Console.WriteLine("Username: ");
             var username = Console.ReadLine();
+            if(username.ToLower() == "finish" || username.ToLower() == "quit")
+            {
+                Console.WriteLine("Sorry, that is an invalid username. Press any key to try again.");
+                Console.ReadKey();
+                CreatePerson();
+            }
             Console.WriteLine("Full name: ");
             var name = Console.ReadLine();
 
@@ -53,7 +59,7 @@ namespace PizzaPerfect
                     People.Add(person);
                     break;
                 }
-                else if (userInput.ToLower() == "x")
+                else if (userInput.ToLower() == "n")
                 {
                     break;
                 }
