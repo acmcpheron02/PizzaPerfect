@@ -10,21 +10,21 @@ Currently this program contains four main menu items.
 
 ## Add a New User
 
-    This will survey the program user to generate a new profile. After answering all questions, the user will be asked if they would like to save the user. This saves the user to the list in memory but it does *not* save the user to the file. This functionality is found under menu option 3.
+This will survey the program user to generate a new profile. After answering all questions, the user will be asked if they would like to save the user. This saves the user to the list in memory but it does *not* save the user to the file. This functionality is found under menu option 3.
     
 ## Review an Existing User
 
-    Search for existing users by username
+Search for existing users by username
     
 ## Save changes to the file
 
-    Serialize the current user list to PizzaPeople.Json. This file name can not be changed from within the program, but the code can be changed freely.
+Serialize the current user list to PizzaPeople.Json. This file name can not be changed from within the program, but the code can be changed freely.
     
 ## Build a Pizza
 
-    Build a group of people you would like to feed, then choose an amount of toppings for the pizza. This will return a string describing the ideal pizza for said group.
+Build a group of people you would like to feed, then choose an amount of toppings for the pizza. This will return a string describing the ideal pizza for said group.
     
-TO-DO ------
+## TO-DO
 
 * Add more robust and consistent input validation
 * Listing a topping as 0 preference should prevent the topping from appearing on a pizza. It does not do that yet.
