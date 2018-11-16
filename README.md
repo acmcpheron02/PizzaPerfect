@@ -1,6 +1,6 @@
 ## Welcome to Pizza Perfect, the program that perfectly picks a pizza per provided preferences.
 
-This project is a work in progress, so please use it gently. In particular, I still need to add some better input validation in the menus. A preloaded user file has been included for testing purposes. They have usernames of 'a', 'b', and 'c'. If you would like to start from scratch, you can delete the contents of the PizzaPeople.Json. Otherwise, new users can be added to the file and used between sessions. The backend file will be automatically loaded on startup.
+This project is a work in progress, so please use it gently. In particular, I still need to add some better input validation in the menus. A preloaded user file has been included for testing purposes. They have usernames of single characters spanning from 'a' to 'n', such as 'a', 'c', or 'g'. If you would like to start from scratch, you can delete the contents of the PizzaPeople.Json. Otherwise, new users can be added to the file and used between sessions. The backend file will be automatically loaded on startup.
 
 How to use:
 * Load the .SLN file in Visual Studio
